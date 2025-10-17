@@ -1,133 +1,171 @@
 # SDPX Seafarer API - Complete Documentation
 
-## 📊 API Information
-**Version:** 1.1  
-**Environment:** Test/Development  
-**Base URL:** https://webapp.mikazadrg.com.my/api/v1
+## API Information
+Version: 1.2
+Environment: Test/Development
+Base URL: https://webapp.mikazadrg.com.my/api/v1
 
-## 🔍 Test Data
-- `200708002327` - Complete profile with certificates and photos
-- `5555` - Alternative test dataset
+## Field Naming Convention - UPDATED
+All field names now use camelCase convention:
+- First word lowercase
+- Subsequent words capitalized
+- Example: seafarerNumber, cardIssuedDate, nextOfKinName
 
-## 🔗 API Endpoints
+## Test Data
+- 200708002327 - Complete profile with certificates and photos
+- 5555 - Alternative test dataset
+- 201542003713 - Alternative test dataset
+
+## API Endpoints
 
 ### 1. Seafarer Profile
-**GET** /seafarer/{seafarerNumber}
+GET /seafarer/{seafarerNumber}
 
 Retrieves complete seafarer profile including personal information, identification card details, and next of kin.
 
-**Response Fields:**
+Response Fields (camelCase):
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| documentType | String | ✅ | Document type |
-| seafarerNumber | String | ✅ | Unique seafarer ID |
-| seafarerName | String | ✅ | Full name (UPPERCASE) |
-| nric | String | ❌ | Malaysian IC (YYMMDD-PB-###G) |
-| address1-3 | String | ❌ | Address lines |
-| postcode | String | ❌ | Postal code |
-| city | String | ❌ | City name |
-| state | String | ❌ | State (Malay) |
-| cardIssuedDate | String | ❌ | Card issue date (YYYY-MM-DD) |
-| issuedPortName | String | ❌ | Issuing port office |
-| cardExpiryDate | String | ❌ | Card expiry date (YYYY-MM-DD) |
-| passportNumber | String | ❌ | Passport number |
-| nationality | String | ❌ | Nationality |
-| placeOfBirth | String | ❌ | Birth place |
-| gender | String | ❌ | M=Male, F=Female |
-| dateOfBirth | String | ❌ | Birth date (YYYY-MM-DD) |
-| photo | String | ❌ | Base64 encoded image |
-| nextOfKin* | String | ❌ | Emergency contact fields |
+| documentType | String | Yes | Document type |
+| seafarerNumber | String | Yes | Unique seafarer ID |
+| seafarerName | String | Yes | Full name (UPPERCASE) |
+| nric | String | No | Malaysian IC number |
+| address1 | String | No | Primary address line |
+| address2 | String | No | Secondary address line |
+| address3 | String | No | Tertiary address line |
+| postcode | String | No | Postal code |
+| city | String | No | City name |
+| state | String | No | State (Malay) |
+| cardIssuedDate | String | No | Card issue date (YYYY-MM-DD) |
+| issuedPortName | String | No | Issuing port office |
+| cardExpiryDate | String | No | Card expiry date (YYYY-MM-DD) |
+| passportNumber | String | No | Passport number |
+| nationality | String | No | Nationality |
+| placeOfBirth | String | No | Birth place |
+| gender | String | No | M=Male, F=Female |
+| dateOfBirth | String | No | Birth date (YYYY-MM-DD) |
+| photo | String | No | Base64 encoded image |
+| nextOfKinName | String | No | Emergency contact name |
+| nextOfKinNRIC | String | No | Emergency contact IC |
+| nextOfKinAddress1 | String | No | Emergency contact address line 1 |
+| nextOfKinAddress2 | String | No | Emergency contact address line 2 |
+| nextOfKinAddress3 | String | No | Emergency contact address line 3 |
+| nextOfKinCity | String | No | Emergency contact city |
+| nextOfKinPostcode | String | No | Emergency contact postcode |
+| nextOfKinState | String | No | Emergency contact state |
+| nextOfKinRelationship | String | No | Relationship to seafarer |
 
 ### 2. COC Certificates
-**GET** /seafarer/{seafarerNumber}/certificates
+GET /seafarer/{seafarerNumber}/certificates
 
 Get all Certificate of Competency documents for a seafarer.
 
-**Response Fields:**
+Response Fields (camelCase - UPDATED):
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| COCIndex | String | ✅ | Unique certificate ID |
-| SeafarerNumber | String | ✅ | Seafarer ID |
-| AppType | String | ✅ | Application type |
-| Grade | String | ❌ | Certificate grade code |
-| GradeName | String | ❌ | Full certificate name |
-| Status | String | ✅ | Certificate status |
-| BookNo1 | String | ❌ | Book number |
-| IssuedDate | String | ❌ | Issue date (YYYY-MM-DD) |
-| ExpiryDate | String | ❌ | Expiry date (YYYY-MM-DD) |
-| RefNo | String | ❌ | Reference number |
-| SerialNo | String | ❌ | Serial number |
+| cocIndex | String | Yes | Unique certificate ID (was COCIndex) |
+| seafarerNumber | String | Yes | Seafarer ID (was SeafarerNumber) |
+| appType | String | Yes | Application type (was AppType) |
+| grade | String | No | Certificate grade code |
+| gradeName | String | No | Full certificate name |
+| status | String | Yes | Certificate status (was Status) |
+| bookNo1 | String | No | Book number |
+| issuedDate | String | No | Issue date (YYYY-MM-DD) |
+| expiryDate | String | No | Expiry date (YYYY-MM-DD) |
+| refNo | String | No | Reference number |
+| serialNo | String | No | Serial number |
 
-**AppType Values:**
-- `BARU` - New application
-- `PERBAHARUI` - Renewal
-- `HILANG` - Lost replacement
-- `ROSAK` - Damaged replacement
+AppType Values:
+- BARU - New application
+- PERBAHARUI - Renewal
+- HILANG - Lost replacement
+- ROSAK - Damaged replacement
 
-**Status Values:**
-- `VALID` - Active certificate
-- `EXPIRED` - Certificate expired
-- `PROCESSING` - Application in progress
-- `REJECTED` - Application rejected
+Status Values:
+- VALID - Active certificate
+- EXPIRED - Certificate expired
+- PROCESSING - Application in progress
+- REJECTED - Application rejected
 
 ### 3. WKR Documents
-**GET** /seafarer/{seafarerNumber}/wkr
+GET /seafarer/{seafarerNumber}/wkr
 
 Get all Watchkeeping Rating documents for a seafarer.
 
-**Response Fields:**
+Response Fields (camelCase - UPDATED):
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| WKRIndex | String | ✅ | Unique WKR document ID |
-| SeafarerNumber | String | ✅ | Seafarer ID |
-| peraturan | String | ❌ | Regulation (Malay) |
-| fungsi | String | ❌ | Function code |
-| fungsiDesc | String | ❌ | Function description |
-| peringkat | String | ❌ | Level/Tier |
-| peringkatLimit | String | ❌ | Level limitation |
-| kapasiti | String | ❌ | Capacity |
-| kapasitiLimit | String | ❌ | Capacity limitation |
-| Status | String | ✅ | Document status |
-| WKRCertNo1 | String | ❌ | Certificate number |
-| IssuedDate | String | ❌ | Issue date (YYYY-MM-DD) |
-| ExpiryDate | String | ❌ | Expiry date (YYYY-MM-DD) |
+| wkrIndex | String | Yes | Unique WKR document ID (was WKRIndex) |
+| seafarerNumber | String | Yes | Seafarer ID (was SeafarerNumber) |
+| peraturan | String | No | Regulation (Malay) |
+| fungsi | String | No | Function code |
+| fungsiDesc | String | No | Function description |
+| peringkat | String | No | Level/Tier |
+| peringkatLimit | String | No | Level limitation |
+| kapasiti | String | No | Capacity |
+| kapasitiLimit | String | No | Capacity limitation |
+| status | String | Yes | Document status (was Status) |
+| wkrCertNo1 | String | No | Certificate number (was WKRCertNo1) |
+| issuedDate | String | No | Issue date (YYYY-MM-DD) |
+| expiryDate | String | No | Expiry date (YYYY-MM-DD) |
 
 ### 4. Training Records
-**GET** /seafarer/{seafarerNumber}/training
+GET /seafarer/{seafarerNumber}/training
 
 Get all training and modular course records for a seafarer.
 
-**Response Fields:**
+Response Fields:
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| certRef | String | ✅ | Certificate reference number |
-| schoolCode | String | ❌ | Training center/school code |
+| certRef | String | Yes | Certificate reference number |
+| schoolCode | String | No | Training center/school code |
 
 ### 5. COR Certificates
-**GET** /seafarer/{seafarerNumber}/cor
+GET /seafarer/{seafarerNumber}/cor
 
 Get all Certificate of Recognition documents (foreign certificates recognized in Malaysia).
 
-**Note:** Uses same structure and enum values as COC Certificates.
+Response Fields (camelCase - UPDATED):
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| corIndex | String | Yes | Unique COR document ID (was CORIndex) |
+| seafarerIndex | String | No | Internal seafarer ID (was SeafarerIndex) |
+| appType | String | No | Application type (was AppType) |
+| grade | String | No | Certificate grade |
+| gradeName | String | No | Grade description |
+| status | String | No | Certificate status (was Status) |
+| issuedDate | String | No | Issue date (YYYY-MM-DD) |
+| expiryDate | String | No | Expiry date (YYYY-MM-DD) |
+| certNo1 | String | No | Certificate number |
+
+Note: Currently only seafarerNumber = 5555 has test data
 
 ### 6. Seatime Records
-**GET** /seafarer/{seafarerNumber}/seatime
+GET /seafarer/{seafarerNumber}/seatime
 
 Get seafarer's service history including vessel service records with grades and capacity.
 
-**Key Fields:**
-- `gradeName1` - Certificate grade name
-- `capacity` - Vessel capacity/limitation
-- `signInDate` / `signOffDate` - Service period (YYYY-MM-DD)
+Response Fields (camelCase - UPDATED):
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| officialNo | String | No | Official vessel number (was OfficialNo) |
+| shipName | String | No | Ship name (was ShipName) |
+| nt | String | No | Net tonnage (was NT) |
+| power | String | No | Engine power (was Power) |
+| tradeLimit | String | No | Trade limitation (was TradeLimit) |
+| signOn | String | No | Sign-on date (YYYY-MM-DD) (was Sign On) |
+| signOff | String | No | Sign-off date (YYYY-MM-DD) (was Sign Off) |
+| certificateGrade | String | No | Certificate grade (was Certificate Grade) |
+| capacity | String | No | Vessel capacity (was Capacity) |
 
-**Note:** Records are sorted by most recent first.
+Note: Records are sorted by most recent first.
+Test with seafarerNumber = 200708002327 (has seatime data)
 
-## 📝 Response Structure
+## Response Structure
 
 All endpoints follow a consistent response structure:
 
 ### Success Response
-```json
 {
   "success": true,
   "message": "Operation completed successfully",
@@ -136,59 +174,42 @@ All endpoints follow a consistent response structure:
     // Response data here
   }
 }
-```
 
 ### Error Response
-```json
 {
   "success": false,
   "message": "Error description"
 }
-```
 
 ### Empty Result Response
-```json
 {
   "success": true,
   "message": "No records found for this seafarer",
   "count": 0,  // For list endpoints
   "data": []
 }
-```
 
-## 🚀 Quick Start Examples
+## Quick Start Examples
 
 ### Get Seafarer Profile
-```bash
 curl -X GET "https://webapp.mikazadrg.com.my/api/v1/seafarer/5555"
-```
 
 ### Get COC Certificates
-```bash
 curl -X GET "https://webapp.mikazadrg.com.my/api/v1/seafarer/5555/certificates"
-```
 
 ### Get WKR Documents
-```bash
 curl -X GET "https://webapp.mikazadrg.com.my/api/v1/seafarer/5555/wkr"
-```
 
 ### Get Training Records
-```bash
 curl -X GET "https://webapp.mikazadrg.com.my/api/v1/seafarer/5555/training"
-```
 
 ### Get COR Certificates
-```bash
 curl -X GET "https://webapp.mikazadrg.com.my/api/v1/seafarer/5555/cor"
-```
 
 ### Get Seatime Records
-```bash
-curl -X GET "https://webapp.mikazadrg.com.my/api/v1/seafarer/200823003303/seatime"
-```
+curl -X GET "https://webapp.mikazadrg.com.my/api/v1/seafarer/5555/seatime"
 
-## 📊 Status Codes
+## Status Codes
 
 | Code | Status | Description |
 |------|--------|-------------|
@@ -197,25 +218,25 @@ curl -X GET "https://webapp.mikazadrg.com.my/api/v1/seafarer/200823003303/seatim
 | 400  | Bad Request | Invalid request parameters |
 | 500  | Internal Server Error | Server error |
 
-## ⚠️ Important Notes
+## Important Notes
 
-1. **No Authentication Required** - All endpoints are publicly accessible
-2. **Rate Limiting** - 60 requests per minute per IP
-3. **Date Format** - All dates use YYYY-MM-DD format
-4. **Photo Data** - Profile photos returned as base64 encoded strings
-5. **Empty Results** - APIs return empty arrays with success=true when no data found
-6. **Case Sensitivity** - Seafarer names returned in UPPERCASE format
-7. **Language** - Some fields use Malay language (e.g., state names, regulations)
+1. No Authentication Required - All endpoints are publicly accessible
+2. Rate Limiting - 60 requests per minute per IP
+3. Date Format - All dates use YYYY-MM-DD format
+4. Photo Data - Profile photos returned as base64 encoded strings
+5. Empty Results - APIs return empty arrays with success=true when no data found
+6. Case Sensitivity - Seafarer names returned in UPPERCASE format
+7. Language - Some fields use Malay language (e.g., state names, regulations)
+8. FIELD NAMING UPDATE - All responses now use camelCase field names
 
-## 🧪 Testing
+## Testing
 
 ### Test Seafarer Numbers:
-- `5555` - Has profile, certificates, WKR, and training data
-- `200708002327` - Complete profile with certificates and photos
-- `200823003303` - Has seatime data
+- 5555 - Has profile, certificates, WKR, and training data
+- 200708002327 - Complete profile with certificates and photos
+- 201542003713 - Alternative test dataset
 
-### Sample Profile Response:
-```json
+### Sample Profile Response (with camelCase fields):
 {
   "success": true,
   "message": "Seafarer profile retrieved successfully",
@@ -233,17 +254,49 @@ curl -X GET "https://webapp.mikazadrg.com.my/api/v1/seafarer/200823003303/seatim
     "nextOfKinRelationship": "Suami/Isteri"
   }
 }
-```
 
-## 🔄 Integration Tips
+## Integration Tips
 
-1. **Error Handling** - Always check the `success` field before processing data
-2. **Data Validation** - Some fields may be null, handle gracefully
-3. **Caching** - Profile data changes infrequently, consider caching responses
-4. **Batch Processing** - No batch endpoint available, process one seafarer at a time
-5. **Image Handling** - Base64 photos can be large, consider lazy loading
+## Migration Guide (v1.1 to v1.2)
+
+The main change in v1.2 is consistent camelCase field naming. Update your field mappings:
+
+COC Certificates:
+- COCIndex -> cocIndex
+- SeafarerNumber -> seafarerNumber
+- AppType -> appType
+- Status -> status
+
+WKR Documents:
+- WKRIndex -> wkrIndex
+- SeafarerNumber -> seafarerNumber
+- Status -> status
+- WKRCertNo1 -> wkrCertNo1
+
+Seatime Records:
+- OfficialNo -> officialNo
+- ShipName -> shipName
+- NT -> nt
+- Power -> power
+- TradeLimit -> tradeLimit
+- Sign On -> signOn
+- Sign Off -> signOff
+- Certificate Grade -> certificateGrade
+- Capacity -> capacity
+
+COR Certificates:
+- CORIndex -> corIndex
+- SeafarerIndex -> seafarerIndex
+- AppType -> appType
+- Status -> status
 
 ---
-**Version:** 1.1
-**Updated:** October 14, 2025
-**Created by:** System Engineer Documentation
+Version: 1.2
+Updated: October 2025
+Created by: System Engineer Documentation
+
+Changes in v1.2:
+- Implemented consistent camelCase field naming across all endpoints
+- Updated documentation to reflect new field names
+- Added migration guide for v1.1 to v1.2 upgrade
+- Improved API documentation structure and examples
