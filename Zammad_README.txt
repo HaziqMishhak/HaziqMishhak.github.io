@@ -10,7 +10,6 @@ Content-Type: application/json
 All variables are pre-configured in collection variables:
 
 - base_url: https://janasyssupport.zammad.com
-- zammad_token: 0wPNqFOUg_xVB81pGuhWhCCWB2UrdOTQAXPcw-lBcEclc1o72O4GsmP8edF3sMyA
 - customer_email: customer@test.com (TEST ONLY - use real email in production)
 - seafarernumber: 20251234
 - seafarername: John Doe
