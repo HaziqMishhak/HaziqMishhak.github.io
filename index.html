@@ -22,6 +22,7 @@
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
@@ -170,12 +171,10 @@
       color: var(--accent-blue-dark);
     }
 
-    /* Photo Gallery */
-    .photo-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 30px;
-      padding: 0 20px;
+    /* Photo Gallery Slider Styles */
+    .photo-slider-container {
+      padding: 0 40px;
+      position: relative;
     }
 
     .gallery-item {
@@ -185,6 +184,7 @@
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       background: var(--bg-white);
+      margin: 15px;
     }
 
     .gallery-item:hover {
@@ -197,6 +197,11 @@
       height: 400px;
       object-fit: cover;
       display: block;
+    }
+
+    /* Vertical images - taller display */
+    .vertical-gallery .gallery-item img {
+      height: 500px;
     }
 
     .gallery-overlay {
@@ -240,9 +245,51 @@
       font-size: 24px;
     }
 
+    /* Swiper Navigation */
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: var(--accent-blue-dark) !important;
+      background: var(--bg-white);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+      font-size: 20px !important;
+    }
+
+    .swiper-pagination-bullet {
+      background: var(--accent-blue-dark) !important;
+      opacity: 0.5;
+    }
+
+    .swiper-pagination-bullet-active {
+      opacity: 1 !important;
+    }
+
+    /* Polaroid Frame Effect for Lightbox */
+    .glightbox-container .gslide-image img {
+      padding: 20px 20px 60px 20px;
+      background: white;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+      border-radius: 2px;
+    }
+
+    .glightbox-container .gslide-media {
+      background: transparent;
+    }
+
+    /* Horizontal Gallery Section */
+    #horizontal-photos {
+      background-color: var(--bg-white);
+    }
+
     /* Video Gallery */
     #videography {
-      background-color: var(--bg-white);
+      background-color: var(--bg-cream);
     }
 
     .video-gallery {
@@ -257,7 +304,7 @@
       overflow: hidden;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      background: var(--bg-cream);
+      background: var(--bg-white);
     }
 
     .video-item:hover {
@@ -329,6 +376,13 @@
       background: var(--accent-blue-dark);
     }
 
+    /* Loading State */
+    .loading-gallery {
+      text-align: center;
+      padding: 60px 0;
+      color: var(--text-light);
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
       #hero h1 {
@@ -339,7 +393,6 @@
         font-size: 1.2rem;
       }
 
-      .photo-gallery,
       .video-gallery {
         grid-template-columns: 1fr;
       }
@@ -347,6 +400,14 @@
       .navbar a {
         margin: 0 10px;
         font-size: 0.9rem;
+      }
+
+      .gallery-item img {
+        height: 300px;
+      }
+
+      .vertical-gallery .gallery-item img {
+        height: 400px;
       }
     }
   </style>
@@ -360,7 +421,8 @@
       <div class="d-flex justify-content-center w-100">
         <a href="#hero">Home</a>
         <a href="#about">About</a>
-        <a href="#photography">Photography</a>
+        <a href="#vertical-photos">Portrait</a>
+        <a href="#horizontal-photos">Landscape</a>
         <a href="#videography">Videography</a>
       </div>
     </div>
@@ -397,166 +459,54 @@
       </div>
     </section>
 
-    <!-- ======= Photography Gallery Section ======= -->
-    <section id="photography">
+    <!-- ======= Vertical/Portrait Photography Gallery Section ======= -->
+    <section id="vertical-photos">
       <div class="container">
         <div class="section-title" data-aos="fade-up">
-          <h2>Photography</h2>
+          <h2>Portrait Photography</h2>
+          <p style="color: var(--text-light); margin-top: 15px;">Vertical compositions capturing elegance and emotion</p>
         </div>
 
-        <div class="photo-gallery">
-
-          <!-- ========== ADD/EDIT PHOTOS BELOW ========== -->
-          <!-- To add more photos: Copy one gallery-item div and change the image path -->
-          <!-- Image format: <img src="assets/img/portfolio/YOUR_IMAGE.jpg" alt="Description"> -->
-
-          <div class="gallery-item" data-aos="fade-up">
-            <img src="assets/img/portfolio/11.jpg" alt="Photography Work">
-            <div class="gallery-overlay">
-              <a href="assets/img/portfolio/11.jpg" class="gallery-icon" data-gallery="photoGallery" title="View Full Size">
-                <i class="bi bi-zoom-in"></i>
-              </a>
-              <a href="assets/img/portfolio/11.jpg" download class="gallery-icon" title="Download">
-                <i class="bi bi-download"></i>
-              </a>
-            </div>
+        <div class="photo-slider-container">
+          <div class="loading-gallery" id="vertical-loading">
+            <i class="bi bi-hourglass-split"></i> Loading gallery...
           </div>
 
-          <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
-            <img src="assets/img/portfolio/15.jpg" alt="Photography Work">
-            <div class="gallery-overlay">
-              <a href="assets/img/portfolio/15.jpg" class="gallery-icon" data-gallery="photoGallery" title="View Full Size">
-                <i class="bi bi-zoom-in"></i>
-              </a>
-              <a href="assets/img/portfolio/15.jpg" download class="gallery-icon" title="Download">
-                <i class="bi bi-download"></i>
-              </a>
+          <!-- Swiper Slider for Vertical Images (4 per slide) -->
+          <div class="swiper verticalSwiper" style="display: none;">
+            <div class="swiper-wrapper vertical-gallery" id="vertical-gallery">
+              <!-- Images will be dynamically added here by JavaScript -->
             </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= Horizontal/Landscape Photography Gallery Section ======= -->
+    <section id="horizontal-photos">
+      <div class="container">
+        <div class="section-title" data-aos="fade-up">
+          <h2>Landscape Photography</h2>
+          <p style="color: var(--text-light); margin-top: 15px;">Horizontal compositions showcasing breadth and beauty</p>
+        </div>
+
+        <div class="photo-slider-container">
+          <div class="loading-gallery" id="horizontal-loading">
+            <i class="bi bi-hourglass-split"></i> Loading gallery...
           </div>
 
-          <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
-            <img src="assets/img/portfolio/16.jpg" alt="Photography Work">
-            <div class="gallery-overlay">
-              <a href="assets/img/portfolio/16.jpg" class="gallery-icon" data-gallery="photoGallery" title="View Full Size">
-                <i class="bi bi-zoom-in"></i>
-              </a>
-              <a href="assets/img/portfolio/16.jpg" download class="gallery-icon" title="Download">
-                <i class="bi bi-download"></i>
-              </a>
+          <!-- Swiper Slider for Horizontal Images (2 per slide) -->
+          <div class="swiper horizontalSwiper" style="display: none;">
+            <div class="swiper-wrapper" id="horizontal-gallery">
+              <!-- Images will be dynamically added here by JavaScript -->
             </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
           </div>
-
-          <div class="gallery-item" data-aos="fade-up">
-            <img src="assets/img/portfolio/17.jpg" alt="Photography Work">
-            <div class="gallery-overlay">
-              <a href="assets/img/portfolio/17.jpg" class="gallery-icon" data-gallery="photoGallery" title="View Full Size">
-                <i class="bi bi-zoom-in"></i>
-              </a>
-              <a href="assets/img/portfolio/17.jpg" download class="gallery-icon" title="Download">
-                <i class="bi bi-download"></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
-            <img src="assets/img/portfolio/18.jpg" alt="Photography Work">
-            <div class="gallery-overlay">
-              <a href="assets/img/portfolio/18.jpg" class="gallery-icon" data-gallery="photoGallery" title="View Full Size">
-                <i class="bi bi-zoom-in"></i>
-              </a>
-              <a href="assets/img/portfolio/18.jpg" download class="gallery-icon" title="Download">
-                <i class="bi bi-download"></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
-            <img src="assets/img/portfolio/12.jpg" alt="Photography Work">
-            <div class="gallery-overlay">
-              <a href="assets/img/portfolio/12.jpg" class="gallery-icon" data-gallery="photoGallery" title="View Full Size">
-                <i class="bi bi-zoom-in"></i>
-              </a>
-              <a href="assets/img/portfolio/12.jpg" download class="gallery-icon" title="Download">
-                <i class="bi bi-download"></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="gallery-item" data-aos="fade-up">
-            <img src="assets/img/portfolio/13.jpg" alt="Photography Work">
-            <div class="gallery-overlay">
-              <a href="assets/img/portfolio/13.jpg" class="gallery-icon" data-gallery="photoGallery" title="View Full Size">
-                <i class="bi bi-zoom-in"></i>
-              </a>
-              <a href="assets/img/portfolio/13.jpg" download class="gallery-icon" title="Download">
-                <i class="bi bi-download"></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
-            <img src="assets/img/portfolio/14.jpg" alt="Photography Work">
-            <div class="gallery-overlay">
-              <a href="assets/img/portfolio/14.jpg" class="gallery-icon" data-gallery="photoGallery" title="View Full Size">
-                <i class="bi bi-zoom-in"></i>
-              </a>
-              <a href="assets/img/portfolio/14.jpg" download class="gallery-icon" title="Download">
-                <i class="bi bi-download"></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
-            <img src="assets/img/portfolio/21.jpg" alt="Photography Work">
-            <div class="gallery-overlay">
-              <a href="assets/img/portfolio/21.jpg" class="gallery-icon" data-gallery="photoGallery" title="View Full Size">
-                <i class="bi bi-zoom-in"></i>
-              </a>
-              <a href="assets/img/portfolio/21.jpg" download class="gallery-icon" title="Download">
-                <i class="bi bi-download"></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="gallery-item" data-aos="fade-up">
-            <img src="assets/img/portfolio/22.jpg" alt="Photography Work">
-            <div class="gallery-overlay">
-              <a href="assets/img/portfolio/22.jpg" class="gallery-icon" data-gallery="photoGallery" title="View Full Size">
-                <i class="bi bi-zoom-in"></i>
-              </a>
-              <a href="assets/img/portfolio/22.jpg" download class="gallery-icon" title="Download">
-                <i class="bi bi-download"></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
-            <img src="assets/img/portfolio/23.jpg" alt="Photography Work">
-            <div class="gallery-overlay">
-              <a href="assets/img/portfolio/23.jpg" class="gallery-icon" data-gallery="photoGallery" title="View Full Size">
-                <i class="bi bi-zoom-in"></i>
-              </a>
-              <a href="assets/img/portfolio/23.jpg" download class="gallery-icon" title="Download">
-                <i class="bi bi-download"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- TO ADD MORE PHOTOS: Copy the gallery-item div above and paste below -->
-          <!-- Example:
-          <div class="gallery-item" data-aos="fade-up">
-            <img src="assets/img/portfolio/YOUR_NEW_IMAGE.jpg" alt="Photography Work">
-            <div class="gallery-overlay">
-              <a href="assets/img/portfolio/YOUR_NEW_IMAGE.jpg" class="gallery-icon" data-gallery="photoGallery" title="View Full Size">
-                <i class="bi bi-zoom-in"></i>
-              </a>
-              <a href="assets/img/portfolio/YOUR_NEW_IMAGE.jpg" download class="gallery-icon" title="Download">
-                <i class="bi bi-download"></i>
-              </a>
-            </div>
-          </div>
-          -->
-
         </div>
       </div>
     </section>
@@ -572,11 +522,9 @@
 
           <!-- ========== ADD/EDIT VIDEOS BELOW ========== -->
           <!-- YouTube: Use embed URL format: https://www.youtube.com/embed/VIDEO_ID -->
-          <!-- Instagram: Use Instagram embed code or link to video -->
 
           <div class="video-item" data-aos="fade-up">
             <div class="video-wrapper">
-              <!-- YouTube Video Embed - Automatically shows preview thumbnail -->
               <iframe src="https://www.youtube.com/embed/767Z3uYmYV0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowfullscreen>
@@ -587,7 +535,6 @@
 
           <div class="video-item" data-aos="fade-up" data-aos-delay="100">
             <div class="video-wrapper">
-              <!-- YouTube Video Embed -->
               <iframe src="https://www.youtube.com/embed/46HiFfkAbW4"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowfullscreen>
@@ -598,13 +545,6 @@
 
           <!-- TO ADD MORE VIDEOS: Copy the video-item div above and paste below -->
           <!--
-          For YouTube videos:
-          1. Go to your YouTube video
-          2. Click "Share" button
-          3. Click "Embed"
-          4. Copy the video ID from the URL (the part after /embed/)
-          5. Paste the full embed URL in the iframe src below
-
           Example:
           <div class="video-item" data-aos="fade-up">
             <div class="video-wrapper">
@@ -614,16 +554,6 @@
               </iframe>
             </div>
             <div class="video-title">Your Video Title</div>
-          </div>
-          -->
-
-          <!-- For Instagram videos, you can use a thumbnail image with link -->
-          <!--
-          <div class="video-item" data-aos="fade-up">
-            <a href="YOUR_INSTAGRAM_VIDEO_URL" target="_blank">
-              <img src="assets/img/portfolio/video-thumbnail.jpg" alt="Instagram Video" style="width: 100%;">
-              <div class="video-title">Instagram Video Title</div>
-            </a>
           </div>
           -->
 
@@ -639,11 +569,9 @@
       <p><strong>Available for Freelance Work</strong></p>
       <p>📧 haziqmishhak@gmail.com | 📱 +60 11-12249105</p>
 
-      <!-- Social Media Links - Update with your actual social media URLs -->
       <div class="social-links">
         <a href="https://instagram.com/haziqmishhak" target="_blank"><i class="bi bi-instagram"></i></a>
         <a href="https://www.youtube.com/@haziqmishhak" target="_blank"><i class="bi bi-youtube"></i></a>
-        <!-- Add more social links as needed -->
       </div>
 
       <p style="margin-top: 30px; font-size: 0.9rem;">&copy; 2024 Haziq Mishhak. All rights reserved.</p>
@@ -656,17 +584,197 @@
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
   <script>
+    // ========== PHOTO GALLERY AUTO-DETECTION AND ORGANIZATION ==========
+    // This script automatically detects whether images are vertical or horizontal
+    // and organizes them into separate sliders
+
+    // List of all your portfolio images
+    // TO ADD MORE PHOTOS: Just add the filename to this array
+    const portfolioImages = [
+      '11.jpg',
+      '15.jpg',
+      '16.jpg',
+      '17.jpg',
+      '18.jpg',
+      '12.jpg',
+      '13.jpg',
+      '14.jpg',
+      '21.jpg',
+      '22.jpg',
+      '23.jpg'
+      // Add more images here in the format: 'YOUR_IMAGE.jpg',
+    ];
+
+    // Function to check if an image is vertical or horizontal
+    function detectImageOrientation(imagePath) {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = function() {
+          const orientation = this.height > this.width ? 'vertical' : 'horizontal';
+          resolve({
+            path: imagePath,
+            orientation: orientation,
+            width: this.width,
+            height: this.height
+          });
+        };
+        img.onerror = function() {
+          resolve({
+            path: imagePath,
+            orientation: 'horizontal', // default to horizontal if image fails to load
+            width: 0,
+            height: 0
+          });
+        };
+        img.src = imagePath;
+      });
+    }
+
+    // Function to create gallery item HTML
+    function createGalleryItem(imagePath, index) {
+      return `
+        <div class="swiper-slide">
+          <div class="gallery-item">
+            <img src="${imagePath}" alt="Photography Work" loading="lazy">
+            <div class="gallery-overlay">
+              <a href="${imagePath}" class="gallery-icon photo-lightbox" title="View Full Size">
+                <i class="bi bi-zoom-in"></i>
+              </a>
+              <a href="${imagePath}" download class="gallery-icon" title="Download">
+                <i class="bi bi-download"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // Initialize the gallery
+    async function initializeGallery() {
+      const verticalImages = [];
+      const horizontalImages = [];
+
+      // Detect orientation of all images
+      const detections = await Promise.all(
+        portfolioImages.map(filename =>
+          detectImageOrientation(`assets/img/portfolio/${filename}`)
+        )
+      );
+
+      // Sort images by orientation
+      detections.forEach(img => {
+        if (img.orientation === 'vertical') {
+          verticalImages.push(img.path);
+        } else {
+          horizontalImages.push(img.path);
+        }
+      });
+
+      // Populate vertical gallery
+      const verticalGallery = document.getElementById('vertical-gallery');
+      if (verticalImages.length > 0) {
+        verticalGallery.innerHTML = verticalImages.map((img, idx) =>
+          createGalleryItem(img, idx)
+        ).join('');
+        document.querySelector('.verticalSwiper').style.display = 'block';
+        document.getElementById('vertical-loading').style.display = 'none';
+      } else {
+        document.getElementById('vertical-loading').innerHTML = '<p>No vertical images found</p>';
+      }
+
+      // Populate horizontal gallery
+      const horizontalGallery = document.getElementById('horizontal-gallery');
+      if (horizontalImages.length > 0) {
+        horizontalGallery.innerHTML = horizontalImages.map((img, idx) =>
+          createGalleryItem(img, idx)
+        ).join('');
+        document.querySelector('.horizontalSwiper').style.display = 'block';
+        document.getElementById('horizontal-loading').style.display = 'none';
+      } else {
+        document.getElementById('horizontal-loading').innerHTML = '<p>No horizontal images found</p>';
+      }
+
+      // Initialize Swiper sliders after images are loaded
+      initializeSwipers();
+
+      // Initialize lightbox for Polaroid effect
+      initializeLightbox();
+    }
+
+    // Initialize Swiper sliders
+    function initializeSwipers() {
+      // Vertical Images Slider (4 images per slide)
+      new Swiper('.verticalSwiper', {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        autoplay: {
+          delay: 7500, // 7.5 seconds
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: '.verticalSwiper .swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.verticalSwiper .swiper-button-next',
+          prevEl: '.verticalSwiper .swiper-button-prev',
+        },
+        breakpoints: {
+          640: {
+            slidesPerView: 2,
+          },
+          768: {
+            slidesPerView: 3,
+          },
+          1024: {
+            slidesPerView: 4,
+          },
+        },
+      });
+
+      // Horizontal Images Slider (2 images per slide)
+      new Swiper('.horizontalSwiper', {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        autoplay: {
+          delay: 8000, // 8 seconds
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: '.horizontalSwiper .swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.horizontalSwiper .swiper-button-next',
+          prevEl: '.horizontalSwiper .swiper-button-prev',
+        },
+        breakpoints: {
+          768: {
+            slidesPerView: 2,
+          },
+        },
+      });
+    }
+
+    // Initialize GLightbox with Polaroid effect
+    function initializeLightbox() {
+      GLightbox({
+        selector: '.photo-lightbox',
+        touchNavigation: true,
+        loop: true,
+        autoplayVideos: true
+      });
+    }
+
     // Initialize AOS (Animate On Scroll)
     AOS.init({
       duration: 1000,
       once: true
-    });
-
-    // Initialize GLightbox for photo gallery
-    const lightbox = GLightbox({
-      selector: '[data-gallery="photoGallery"]'
     });
 
     // Smooth scrolling for navigation links
@@ -683,6 +791,9 @@
         }
       });
     });
+
+    // Start the gallery when page loads
+    window.addEventListener('load', initializeGallery);
   </script>
 
 </body>
