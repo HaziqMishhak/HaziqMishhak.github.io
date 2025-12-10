@@ -314,38 +314,46 @@
       height: 12px;
     }
 
-    /* Enhanced Polaroid Frame Effect with subtle backdrop */
+    /* Enhanced Polaroid Popup Effect with rounded corners */
     .glightbox-container {
-      background: rgba(0, 0, 0, 0.1) !important;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      background: rgba(0, 0, 0, 0.05) !important;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
     }
 
     .glightbox-container .ginner-container {
-      perspective: 1000px;
+      perspective: 1200px;
+      max-width: 85vw !important;
+      max-height: 85vh !important;
     }
 
     .glightbox-container .gslide-image {
       transform: translateZ(50px);
-      transition: transform 0.3s ease;
+      transition: transform 0.4s ease;
+      max-width: 900px !important;
+      max-height: 80vh !important;
+      margin: auto;
     }
 
     .glightbox-container .gslide-image img {
-      padding: 20px 20px 60px 20px;
+      padding: 25px 25px 70px 25px;
       background: white;
       box-shadow:
-        0 20px 60px rgba(0,0,0,0.4),
-        0 10px 20px rgba(0,0,0,0.2);
-      border-radius: 3px;
+        0 25px 70px rgba(0,0,0,0.35),
+        0 15px 30px rgba(0,0,0,0.2);
+      border-radius: 15px;
       transform: rotate(0deg);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
     }
 
     .glightbox-container .gslide-image:hover img {
-      transform: rotate(0deg) scale(1.02);
+      transform: rotate(0deg) scale(1.01);
       box-shadow:
-        0 25px 80px rgba(0,0,0,0.5),
-        0 15px 30px rgba(0,0,0,0.3);
+        0 30px 90px rgba(0,0,0,0.4),
+        0 20px 40px rgba(0,0,0,0.25);
     }
 
     .glightbox-container .gslide-media {
@@ -362,6 +370,23 @@
     /* Blur the background content */
     body.glightbox-open {
       overflow: hidden;
+    }
+
+    /* Mobile adjustments for popup */
+    @media (max-width: 768px) {
+      .glightbox-container .ginner-container {
+        max-width: 95vw !important;
+        max-height: 90vh !important;
+      }
+
+      .glightbox-container .gslide-image {
+        max-width: 100% !important;
+      }
+
+      .glightbox-container .gslide-image img {
+        padding: 15px 15px 50px 15px;
+        border-radius: 10px;
+      }
     }
 
     /* Horizontal Gallery Section */
