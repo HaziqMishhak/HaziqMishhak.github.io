@@ -194,14 +194,26 @@
 
     .gallery-item img {
       width: 100%;
-      height: 400px;
       object-fit: cover;
       display: block;
     }
 
-    /* Vertical images - taller display */
+    /* Vertical images - 2:3 aspect ratio (portrait) */
+    .vertical-gallery .gallery-item {
+      aspect-ratio: 2 / 3;
+    }
+
     .vertical-gallery .gallery-item img {
-      height: 500px;
+      height: 100%;
+    }
+
+    /* Horizontal images - 16:9 aspect ratio */
+    .horizontal-gallery .gallery-item {
+      aspect-ratio: 16 / 9;
+    }
+
+    .horizontal-gallery .gallery-item img {
+      height: 100%;
     }
 
     .gallery-overlay {
@@ -245,20 +257,26 @@
       font-size: 24px;
     }
 
-    /* Swiper Navigation */
+    /* Swiper Navigation - Minimal arrows without circles */
     .swiper-button-next,
     .swiper-button-prev {
-      color: var(--accent-blue-dark) !important;
-      background: var(--bg-white);
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      color: var(--text-dark) !important;
+      background: transparent;
+      width: 40px;
+      height: 40px;
+      opacity: 0.6;
+      transition: opacity 0.3s ease;
+    }
+
+    .swiper-button-next:hover,
+    .swiper-button-prev:hover {
+      opacity: 1;
     }
 
     .swiper-button-next:after,
     .swiper-button-prev:after {
-      font-size: 20px !important;
+      font-size: 24px !important;
+      font-weight: bold;
     }
 
     .swiper-pagination-bullet {
@@ -270,16 +288,46 @@
       opacity: 1 !important;
     }
 
-    /* Polaroid Frame Effect for Lightbox */
+    /* Enhanced Polaroid Frame Effect with 3D blur backdrop */
+    .glightbox-container {
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .glightbox-container .ginner-container {
+      perspective: 1000px;
+    }
+
+    .glightbox-container .gslide-image {
+      transform: translateZ(50px);
+      transition: transform 0.3s ease;
+    }
+
     .glightbox-container .gslide-image img {
       padding: 20px 20px 60px 20px;
       background: white;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-      border-radius: 2px;
+      box-shadow:
+        0 20px 60px rgba(0,0,0,0.4),
+        0 10px 20px rgba(0,0,0,0.2);
+      border-radius: 3px;
+      transform: rotate(0deg);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .glightbox-container .gslide-image:hover img {
+      transform: rotate(0deg) scale(1.02);
+      box-shadow:
+        0 25px 80px rgba(0,0,0,0.5),
+        0 15px 30px rgba(0,0,0,0.3);
     }
 
     .glightbox-container .gslide-media {
       background: transparent;
+    }
+
+    /* Blur the background content */
+    body.glightbox-open {
+      overflow: hidden;
     }
 
     /* Horizontal Gallery Section */
@@ -402,12 +450,25 @@
         font-size: 0.9rem;
       }
 
-      .gallery-item img {
-        height: 300px;
+      /* Maintain aspect ratios on mobile */
+      .vertical-gallery .gallery-item {
+        aspect-ratio: 2 / 3;
       }
 
-      .vertical-gallery .gallery-item img {
-        height: 400px;
+      .horizontal-gallery .gallery-item {
+        aspect-ratio: 16 / 9;
+      }
+
+      /* Make navigation arrows smaller on mobile */
+      .swiper-button-next,
+      .swiper-button-prev {
+        width: 30px;
+        height: 30px;
+      }
+
+      .swiper-button-next:after,
+      .swiper-button-prev:after {
+        font-size: 18px !important;
       }
     }
   </style>
@@ -500,7 +561,7 @@
 
           <!-- Swiper Slider for Horizontal Images (2 per slide) -->
           <div class="swiper horizontalSwiper" style="display: none;">
-            <div class="swiper-wrapper" id="horizontal-gallery">
+            <div class="swiper-wrapper horizontal-gallery" id="horizontal-gallery">
               <!-- Images will be dynamically added here by JavaScript -->
             </div>
             <div class="swiper-button-next"></div>
