@@ -96,14 +96,14 @@
       font-weight: 300;
     }
 
-    /* Section Styling */
+    /* Section Styling - Improved spacing for breathing room */
     section {
-      padding: 80px 0;
+      padding: 100px 0;
     }
 
     .section-title {
       text-align: center;
-      margin-bottom: 60px;
+      margin-bottom: 80px;
     }
 
     .section-title h2 {
@@ -112,7 +112,8 @@
       color: var(--text-dark);
       position: relative;
       display: inline-block;
-      padding-bottom: 15px;
+      padding-bottom: 20px;
+      letter-spacing: 0.5px;
     }
 
     .section-title h2:after {
@@ -121,9 +122,16 @@
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 60px;
-      height: 3px;
+      width: 80px;
+      height: 4px;
       background: var(--accent-blue-dark);
+      border-radius: 2px;
+    }
+
+    .section-title p {
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
     }
 
     /* About Section */
@@ -150,15 +158,19 @@
       font-size: 1.1rem;
       line-height: 1.8;
       color: var(--text-light);
-      margin-bottom: 20px;
+      margin-bottom: 30px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .contact-info {
       display: flex;
       justify-content: center;
-      gap: 30px;
-      margin-top: 30px;
+      gap: 40px;
+      margin-top: 40px;
       flex-wrap: wrap;
+      font-size: 0.95rem;
     }
 
     .contact-info a {
@@ -171,25 +183,26 @@
       color: var(--accent-blue-dark);
     }
 
-    /* Photo Gallery Slider Styles */
+    /* Photo Gallery Slider Styles - Improved spacing */
     .photo-slider-container {
-      padding: 0 40px;
+      padding: 0 60px;
       position: relative;
     }
 
     .gallery-item {
       position: relative;
       overflow: hidden;
-      border-radius: 8px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                  box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       background: var(--bg-white);
-      margin: 15px;
+      margin: 0 12px;
     }
 
     .gallery-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      transform: translateY(-8px);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.15);
     }
 
     .gallery-item img {
@@ -222,17 +235,20 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(168, 201, 221, 0.9);
+      background: rgba(168, 201, 221, 0.92);
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 20px;
+      gap: 25px;
       opacity: 0;
-      transition: opacity 0.3s ease;
+      visibility: hidden;
+      transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                  visibility 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .gallery-item:hover .gallery-overlay {
       opacity: 1;
+      visibility: visible;
     }
 
     .gallery-icon {
@@ -279,19 +295,30 @@
       font-weight: bold;
     }
 
+    .swiper-pagination {
+      position: relative !important;
+      margin-top: 30px !important;
+      bottom: auto !important;
+    }
+
     .swiper-pagination-bullet {
       background: var(--accent-blue-dark) !important;
       opacity: 0.5;
+      width: 10px;
+      height: 10px;
     }
 
     .swiper-pagination-bullet-active {
       opacity: 1 !important;
+      width: 12px;
+      height: 12px;
     }
 
-    /* Enhanced Polaroid Frame Effect with 3D blur backdrop */
+    /* Enhanced Polaroid Frame Effect with subtle backdrop */
     .glightbox-container {
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.1) !important;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
 
     .glightbox-container .ginner-container {
@@ -323,6 +350,13 @@
 
     .glightbox-container .gslide-media {
       background: transparent;
+    }
+
+    /* Hide bottom text and description */
+    .glightbox-container .gslide-desc,
+    .glightbox-container .gdesc-inner,
+    .glightbox-container .gslide-title {
+      display: none !important;
     }
 
     /* Blur the background content */
@@ -383,21 +417,23 @@
       color: var(--text-light);
     }
 
-    /* Footer */
+    /* Footer - Improved spacing and hierarchy */
     footer {
       background-color: var(--text-dark);
       color: var(--bg-white);
-      padding: 40px 0;
+      padding: 60px 0 40px;
       text-align: center;
     }
 
     footer p {
-      margin: 10px 0;
+      margin: 15px 0;
+      line-height: 1.6;
     }
 
     footer a {
       color: var(--accent-blue);
       text-decoration: none;
+      transition: color 0.3s ease;
     }
 
     footer a:hover {
@@ -405,23 +441,25 @@
     }
 
     .social-links {
-      margin-top: 20px;
+      margin-top: 30px;
+      margin-bottom: 20px;
     }
 
     .social-links a {
       display: inline-block;
-      width: 40px;
-      height: 40px;
+      width: 45px;
+      height: 45px;
       background: var(--accent-blue);
       border-radius: 50%;
-      margin: 0 10px;
-      line-height: 40px;
+      margin: 0 12px;
+      line-height: 45px;
       text-align: center;
-      transition: background 0.3s ease;
+      transition: background 0.3s ease, transform 0.3s ease;
     }
 
     .social-links a:hover {
       background: var(--accent-blue-dark);
+      transform: translateY(-3px);
     }
 
     /* Loading State */
@@ -431,23 +469,66 @@
       color: var(--text-light);
     }
 
-    /* Responsive */
+    /* Responsive - Enhanced mobile experience */
     @media (max-width: 768px) {
+      /* Adjust section padding on mobile */
+      section {
+        padding: 60px 0;
+      }
+
+      .section-title {
+        margin-bottom: 50px;
+      }
+
+      .section-title h2 {
+        font-size: 2rem;
+      }
+
+      /* Hero adjustments */
+      #hero {
+        min-height: 70vh;
+        height: auto;
+      }
+
       #hero h1 {
         font-size: 2.5rem;
+        padding: 0 20px;
       }
 
       #hero p {
         font-size: 1.2rem;
+        padding: 0 20px;
       }
 
-      .video-gallery {
-        grid-template-columns: 1fr;
+      /* Navigation */
+      .navbar {
+        padding: 15px 0;
       }
 
       .navbar a {
-        margin: 0 10px;
+        margin: 0 8px;
+        font-size: 0.85rem;
+      }
+
+      /* About section mobile */
+      .about-content p {
+        font-size: 1rem;
+        padding: 0 20px;
+      }
+
+      .contact-info {
+        gap: 20px;
         font-size: 0.9rem;
+        padding: 0 20px;
+      }
+
+      /* Gallery container mobile */
+      .photo-slider-container {
+        padding: 0 30px;
+      }
+
+      .gallery-item {
+        margin: 0 8px;
       }
 
       /* Maintain aspect ratios on mobile */
@@ -457,6 +538,12 @@
 
       .horizontal-gallery .gallery-item {
         aspect-ratio: 16 / 9;
+      }
+
+      /* Video gallery mobile */
+      .video-gallery {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
       }
 
       /* Make navigation arrows smaller on mobile */
@@ -469,6 +556,46 @@
       .swiper-button-next:after,
       .swiper-button-prev:after {
         font-size: 18px !important;
+      }
+
+      /* Footer mobile */
+      footer {
+        padding: 40px 20px 30px;
+      }
+
+      footer p {
+        font-size: 0.9rem;
+      }
+
+      .social-links a {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        margin: 0 8px;
+      }
+    }
+
+    /* Extra small devices */
+    @media (max-width: 480px) {
+      #hero h1 {
+        font-size: 2rem;
+      }
+
+      #hero p {
+        font-size: 1rem;
+      }
+
+      .section-title h2 {
+        font-size: 1.75rem;
+      }
+
+      .navbar a {
+        margin: 0 5px;
+        font-size: 0.75rem;
+      }
+
+      .photo-slider-container {
+        padding: 0 20px;
       }
     }
   </style>
@@ -765,16 +892,17 @@
       initializeLightbox();
     }
 
-    // Initialize Swiper sliders
+    // Initialize Swiper sliders with improved spacing
     function initializeSwipers() {
       // Vertical Images Slider (4 images per slide)
       new Swiper('.verticalSwiper', {
         slidesPerView: 1,
-        spaceBetween: 30,
+        spaceBetween: 24,
         loop: true,
         autoplay: {
           delay: 7500, // 7.5 seconds
           disableOnInteraction: false,
+          pauseOnMouseEnter: true,
         },
         pagination: {
           el: '.verticalSwiper .swiper-pagination',
@@ -784,15 +912,20 @@
           nextEl: '.verticalSwiper .swiper-button-next',
           prevEl: '.verticalSwiper .swiper-button-prev',
         },
+        speed: 800,
+        effect: 'slide',
         breakpoints: {
           640: {
             slidesPerView: 2,
+            spaceBetween: 20,
           },
           768: {
             slidesPerView: 3,
+            spaceBetween: 24,
           },
           1024: {
             slidesPerView: 4,
+            spaceBetween: 24,
           },
         },
       });
@@ -800,11 +933,12 @@
       // Horizontal Images Slider (2 images per slide)
       new Swiper('.horizontalSwiper', {
         slidesPerView: 1,
-        spaceBetween: 30,
+        spaceBetween: 24,
         loop: true,
         autoplay: {
           delay: 8000, // 8 seconds
           disableOnInteraction: false,
+          pauseOnMouseEnter: true,
         },
         pagination: {
           el: '.horizontalSwiper .swiper-pagination',
@@ -814,9 +948,12 @@
           nextEl: '.horizontalSwiper .swiper-button-next',
           prevEl: '.horizontalSwiper .swiper-button-prev',
         },
+        speed: 800,
+        effect: 'slide',
         breakpoints: {
           768: {
             slidesPerView: 2,
+            spaceBetween: 24,
           },
         },
       });
