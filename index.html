@@ -1,1089 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>Haziq Mishhak - Photography & Videography</title>
-  <meta content="Freelance photographer and videographer showcasing artistic work" name="description">
-  <meta content="photography, videography, freelance photographer, art gallery" name="keywords">
-
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-
-  <style>
-    /* ===== CUSTOM ART GALLERY STYLES ===== */
-
-    :root {
-      --bg-cream: #faf8f5;
-      --bg-white: #ffffff;
-      --accent-blue: #a8c9dd;
-      --accent-blue-dark: #7fa8c4;
-      --text-dark: #2c2c2c;
-      --text-light: #666666;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--bg-cream);
-      color: var(--text-dark);
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-      font-family: 'Playfair Display', serif;
-    }
-
-    /* Navigation */
-    .navbar {
-      background-color: var(--bg-white);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      padding: 20px 0;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .navbar a {
-      color: var(--text-dark);
-      text-decoration: none;
-      margin: 0 20px;
-      font-weight: 400;
-      transition: color 0.3s ease;
-    }
-
-    .navbar a:hover {
-      color: var(--accent-blue-dark);
-    }
-
-    /* Hero Section */
-    #hero {
-      height: 100vh;
-      background: linear-gradient(135deg, var(--bg-cream) 0%, var(--accent-blue) 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      margin-top: 80px;
-    }
-
-    #hero h1 {
-      font-size: 4rem;
-      font-weight: 600;
-      color: var(--text-dark);
-      margin-bottom: 20px;
-    }
-
-    #hero p {
-      font-size: 1.5rem;
-      color: var(--text-light);
-      font-weight: 300;
-    }
-
-    /* Section Styling - Improved spacing for breathing room */
-    section {
-      padding: 100px 0;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 80px;
-    }
-
-    .section-title h2 {
-      font-size: 2.5rem;
-      font-weight: 600;
-      color: var(--text-dark);
-      position: relative;
-      display: inline-block;
-      padding-bottom: 20px;
-      letter-spacing: 0.5px;
-    }
-
-    .section-title h2:after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 4px;
-      background: var(--accent-blue-dark);
-      border-radius: 2px;
-    }
-
-    .section-title p {
-      max-width: 600px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-
-    /* About Section */
-    #about {
-      background-color: var(--bg-white);
-    }
-
-    .about-content {
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .about-content img {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 30px;
-      border: 5px solid var(--accent-blue);
-    }
-
-    .about-content p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: var(--text-light);
-      margin-bottom: 30px;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .contact-info {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin-top: 40px;
-      flex-wrap: wrap;
-      font-size: 0.95rem;
-    }
-
-    .contact-info a {
-      color: var(--text-dark);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    .contact-info a:hover {
-      color: var(--accent-blue-dark);
-    }
-
-    /* Photo Gallery Slider Styles - Improved spacing */
-    .photo-slider-container {
-      padding: 0 60px;
-      position: relative;
-    }
-
-    .gallery-item {
-      position: relative;
-      overflow: hidden;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                  box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      background: var(--bg-white);
-      margin: 0 12px;
-    }
-
-    .gallery-item:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 35px rgba(0,0,0,0.15);
-    }
-
-    .gallery-item img {
-      width: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* Vertical images - 2:3 aspect ratio (portrait) */
-    .vertical-gallery .gallery-item {
-      aspect-ratio: 2 / 3;
-    }
-
-    .vertical-gallery .gallery-item img {
-      height: 100%;
-    }
-
-    /* Horizontal images - 16:9 aspect ratio */
-    .horizontal-gallery .gallery-item {
-      aspect-ratio: 16 / 9;
-    }
-
-    .horizontal-gallery .gallery-item img {
-      height: 100%;
-    }
-
-    .gallery-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(168, 201, 221, 0.92);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 25px;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                  visibility 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .gallery-item:hover .gallery-overlay {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .gallery-icon {
-      width: 50px;
-      height: 50px;
-      background: var(--bg-white);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-      text-decoration: none;
-      color: var(--text-dark);
-    }
-
-    .gallery-icon:hover {
-      transform: scale(1.1);
-    }
-
-    .gallery-icon i {
-      font-size: 24px;
-    }
-
-    /* Swiper Navigation - Minimal arrows without circles */
-    .swiper-button-next,
-    .swiper-button-prev {
-      color: var(--text-dark) !important;
-      background: transparent;
-      width: 40px;
-      height: 40px;
-      opacity: 0.6;
-      transition: opacity 0.3s ease;
-    }
-
-    .swiper-button-next:hover,
-    .swiper-button-prev:hover {
-      opacity: 1;
-    }
-
-    .swiper-button-next:after,
-    .swiper-button-prev:after {
-      font-size: 24px !important;
-      font-weight: bold;
-    }
-
-    .swiper-pagination {
-      position: relative !important;
-      margin-top: 30px !important;
-      bottom: auto !important;
-    }
-
-    .swiper-pagination-bullet {
-      background: var(--accent-blue-dark) !important;
-      opacity: 0.5;
-      width: 10px;
-      height: 10px;
-    }
-
-    .swiper-pagination-bullet-active {
-      opacity: 1 !important;
-      width: 12px;
-      height: 12px;
-    }
-
-    /* Enhanced Polaroid Popup Effect - Professional Implementation */
-
-    /* Target the actual overlay background for opacity */
-    .goverlay {
-      background: rgba(0, 0, 0, 0.05) !important;
-      backdrop-filter: blur(5px) !important;
-      -webkit-backdrop-filter: blur(5px) !important;
-    }
-
-    /* Main container styling */
-    .glightbox-container {
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
-    }
-
-    /* Inner container - constrain the size */
-    .glightbox-container .gcontainer {
-      max-width: 90vw !important;
-      max-height: 90vh !important;
-    }
-
-    .glightbox-container .ginner-container {
-      perspective: 1200px;
-      max-width: 850px !important;
-      width: auto !important;
-      height: auto !important;
-    }
-
-    /* Slide container */
-    .glightbox-container .gslide {
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-    }
-
-    .glightbox-container .gslide-inner-content {
-      max-width: 850px !important;
-      max-height: 75vh !important;
-      width: auto !important;
-      height: auto !important;
-      margin: auto !important;
-    }
-
-    /* Image wrapper with 3D effect */
-    .glightbox-container .gslide-image {
-      transform: translateZ(50px);
-      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      max-width: 100% !important;
-      max-height: 75vh !important;
-      width: auto !important;
-      height: auto !important;
-      margin: 0 !important;
-      padding: 0 !important;
-    }
-
-    /* Polaroid frame styling */
-    .glightbox-container .gslide-image img {
-      padding: 25px 25px 70px 25px !important;
-      background: white !important;
-      box-shadow:
-        0 25px 70px rgba(0,0,0,0.35),
-        0 15px 30px rgba(0,0,0,0.2) !important;
-      border-radius: 15px !important;
-      transform: rotate(0deg) !important;
-      transition: transform 0.4s ease, box-shadow 0.4s ease !important;
-      max-width: 750px !important;
-      max-height: calc(75vh - 100px) !important;
-      width: auto !important;
-      height: auto !important;
-      object-fit: contain !important;
-    }
-
-    /* Hover effect on Polaroid */
-    .glightbox-container .gslide-image:hover img {
-      transform: rotate(0deg) scale(1.01) !important;
-      box-shadow:
-        0 30px 90px rgba(0,0,0,0.4),
-        0 20px 40px rgba(0,0,0,0.25) !important;
-    }
-
-    /* Media container */
-    .glightbox-container .gslide-media {
-      background: transparent !important;
-      max-width: 100% !important;
-    }
-
-    /* Hide descriptions and titles */
-    .glightbox-container .gslide-desc,
-    .glightbox-container .gdesc-inner,
-    .glightbox-container .gslide-title {
-      display: none !important;
-    }
-
-    /* Prevent body scroll when lightbox open */
-    body.glightbox-open {
-      overflow: hidden !important;
-    }
-
-    /* Mobile responsive popup - more constrained */
-    @media (max-width: 768px) {
-      .goverlay {
-        background: rgba(0, 0, 0, 0.08) !important;
-      }
-
-      .glightbox-container .gcontainer {
-        max-width: 95vw !important;
-        max-height: 90vh !important;
-      }
-
-      .glightbox-container .ginner-container {
-        max-width: 90vw !important;
-      }
-
-      .glightbox-container .gslide-inner-content {
-        max-width: 90vw !important;
-        max-height: 70vh !important;
-      }
-
-      .glightbox-container .gslide-image {
-        max-width: 90vw !important;
-        max-height: 70vh !important;
-      }
-
-      .glightbox-container .gslide-image img {
-        padding: 15px 15px 50px 15px !important;
-        border-radius: 10px !important;
-        max-width: calc(90vw - 30px) !important;
-        max-height: calc(70vh - 65px) !important;
-      }
-    }
-
-    /* Extra small devices - even more constrained */
-    @media (max-width: 480px) {
-      .glightbox-container .gslide-image img {
-        padding: 12px 12px 40px 12px !important;
-        max-width: calc(85vw - 24px) !important;
-        max-height: calc(65vh - 52px) !important;
-      }
-    }
-
-    /* Horizontal Gallery Section */
-    #horizontal-photos {
-      background-color: var(--bg-white);
-    }
-
-    /* Video Gallery */
-    #videography {
-      background-color: var(--bg-cream);
-    }
-
-    .video-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
-      gap: 40px;
-      padding: 0 20px;
-    }
-
-    .video-item {
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      background: var(--bg-white);
-    }
-
-    .video-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    }
-
-    .video-wrapper {
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio */
-      height: 0;
-      overflow: hidden;
-    }
-
-    .video-wrapper iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    .video-title {
-      padding: 20px;
-      text-align: center;
-      font-size: 1rem;
-      color: var(--text-light);
-    }
-
-    /* Footer - Improved spacing and hierarchy */
-    footer {
-      background-color: var(--text-dark);
-      color: var(--bg-white);
-      padding: 60px 0 40px;
-      text-align: center;
-    }
-
-    footer p {
-      margin: 15px 0;
-      line-height: 1.6;
-    }
-
-    footer a {
-      color: var(--accent-blue);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    footer a:hover {
-      color: var(--accent-blue-dark);
-    }
-
-    .social-links {
-      margin-top: 30px;
-      margin-bottom: 20px;
-    }
-
-    .social-links a {
-      display: inline-block;
-      width: 45px;
-      height: 45px;
-      background: var(--accent-blue);
-      border-radius: 50%;
-      margin: 0 12px;
-      line-height: 45px;
-      text-align: center;
-      transition: background 0.3s ease, transform 0.3s ease;
-    }
-
-    .social-links a:hover {
-      background: var(--accent-blue-dark);
-      transform: translateY(-3px);
-    }
-
-    /* Loading State */
-    .loading-gallery {
-      text-align: center;
-      padding: 60px 0;
-      color: var(--text-light);
-    }
-
-    /* Responsive - Enhanced mobile experience */
-    @media (max-width: 768px) {
-      /* Adjust section padding on mobile */
-      section {
-        padding: 60px 0;
-      }
-
-      .section-title {
-        margin-bottom: 50px;
-      }
-
-      .section-title h2 {
-        font-size: 2rem;
-      }
-
-      /* Hero adjustments */
-      #hero {
-        min-height: 70vh;
-        height: auto;
-      }
-
-      #hero h1 {
-        font-size: 2.5rem;
-        padding: 0 20px;
-      }
-
-      #hero p {
-        font-size: 1.2rem;
-        padding: 0 20px;
-      }
-
-      /* Navigation */
-      .navbar {
-        padding: 15px 0;
-      }
-
-      .navbar a {
-        margin: 0 8px;
-        font-size: 0.85rem;
-      }
-
-      /* About section mobile */
-      .about-content p {
-        font-size: 1rem;
-        padding: 0 20px;
-      }
-
-      .contact-info {
-        gap: 20px;
-        font-size: 0.9rem;
-        padding: 0 20px;
-      }
-
-      /* Gallery container mobile */
-      .photo-slider-container {
-        padding: 0 30px;
-      }
-
-      .gallery-item {
-        margin: 0 8px;
-      }
-
-      /* Maintain aspect ratios on mobile */
-      .vertical-gallery .gallery-item {
-        aspect-ratio: 2 / 3;
-      }
-
-      .horizontal-gallery .gallery-item {
-        aspect-ratio: 16 / 9;
-      }
-
-      /* Video gallery mobile */
-      .video-gallery {
-        grid-template-columns: 1fr;
-        padding: 0 20px;
-      }
-
-      /* Make navigation arrows smaller on mobile */
-      .swiper-button-next,
-      .swiper-button-prev {
-        width: 30px;
-        height: 30px;
-      }
-
-      .swiper-button-next:after,
-      .swiper-button-prev:after {
-        font-size: 18px !important;
-      }
-
-      /* Footer mobile */
-      footer {
-        padding: 40px 20px 30px;
-      }
-
-      footer p {
-        font-size: 0.9rem;
-      }
-
-      .social-links a {
-        width: 40px;
-        height: 40px;
-        line-height: 40px;
-        margin: 0 8px;
-      }
-    }
-
-    /* Extra small devices */
-    @media (max-width: 480px) {
-      #hero h1 {
-        font-size: 2rem;
-      }
-
-      #hero p {
-        font-size: 1rem;
-      }
-
-      .section-title h2 {
-        font-size: 1.75rem;
-      }
-
-      .navbar a {
-        margin: 0 5px;
-        font-size: 0.75rem;
-      }
-
-      .photo-slider-container {
-        padding: 0 20px;
-      }
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Haziq Mishhak — Photographic Works</title>
+  <meta name="description" content="A photographic archive by Haziq Mishhak. Verticals, horizontals, and moving image." />
+  <link rel="icon" href="assets/img/favicon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/gallery.css" />
 </head>
-
 <body>
 
-  <!-- ======= Navigation ======= -->
-  <nav class="navbar">
-    <div class="container">
-      <div class="d-flex justify-content-center w-100">
-        <a href="#hero">Home</a>
-        <a href="#about">About</a>
-        <a href="#vertical-photos">Portrait</a>
-        <a href="#horizontal-photos">Landscape</a>
-        <a href="#videography">Videography</a>
+  <!-- ============ NAVBAR ============ -->
+  <header class="nav">
+    <div class="nav__inner">
+      <a class="nav__logo" href="#top" aria-label="Home">
+        <img src="assets/img/favicon.png" alt="HS" />
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#verticals"><span class="nav__num">01</span>Portraits</a>
+        <a href="#horizontals"><span class="nav__num">02</span>Landscape</a>
+        <a href="#motion"><span class="nav__num">03</span>Motion</a>
+      </nav>
+      <div class="nav__meta">
+        <span class="nav__dot"></span>
+        <span>Archive · MMXXVI</span>
       </div>
     </div>
-  </nav>
+  </header>
 
-  <!-- ======= Hero Section ======= -->
-  <section id="hero">
-    <div class="container" data-aos="fade-up">
-      <h1>HAZIQ MISHHAK</h1>
-      <p>Photographer & Videographer</p>
+  <!-- ============ HERO ============ -->
+  <section id="top" class="hero">
+    <!-- blurred photo background -->
+    <div class="hero__bg" aria-hidden="true">
+      <img src="assets/img/hero-bg.jpg" alt="" fetchpriority="high" />
+    </div>
+    <!-- dark + colour overlay -->
+    <div class="hero__overlay" aria-hidden="true"></div>
+
+    <div class="hero__inner">
+      <div class="hero__eyebrow">
+        <span class="tick"></span>
+        <span>Vol. 01 — A Photographic Archive</span>
+      </div>
+
+      <h1 class="hero__title">
+        <span class="hero__line">Haziq</span>
+        <span class="hero__line hero__line--italic">Mishhak<em class="hero__amp">&amp;</em></span>
+        <span class="hero__line hero__line--out">the things he saw.</span>
+      </h1>
+
+      <div class="hero__foot">
+        <p class="hero__lede">
+          A quiet collection of frames — light caught in passing,
+          composed in cream &amp; terracotta. Click any photograph to
+          look closer; download what you like.
+        </p>
+        <div class="hero__index">
+          <a href="#verticals"><b>01</b> Portraits</a>
+          <a href="#horizontals"><b>02</b> Landscape</a>
+          <a href="#motion"><b>03</b> Motion</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- scroll cue -->
+    <div class="hero__scroll" aria-hidden="true">
+      <span class="hero__scroll-line"></span>
+      <span class="hero__scroll-label">Scroll</span>
     </div>
   </section>
 
-  <main>
+  <!-- ============ SECTION 01 — PORTRAITS ============ -->
+  <div class="section-divider" aria-hidden="true"><span>01 · Portraits</span></div>
+  <section id="verticals" class="section">
+    <header class="section__head">
+      <div class="section__head-top">
+        <span class="section__num">01</span>
+        <span class="section__count" data-count-target="vertical">— / —</span>
+      </div>
+      <h2 class="section__title">Portraits</h2>
+      <p class="section__sub">Portrait orientation · standing frames</p>
+    </header>
 
-    <!-- ======= About Section ======= -->
-    <section id="about">
-      <div class="container">
-        <div class="about-content" data-aos="fade-up">
-          <img src="assets/img/profile-img.jpg" alt="Haziq Mishhak">
-          <h2>Haziq Syahmi Bin Mishhak</h2>
-          <p>
-            Freelance photographer and videographer with nearly 5 years of capturing moments and creating visual stories.
-            From weddings to brands, portraits to events—I transform visions into timeless imagery.
-            Based in Semenyih, Selangor, bringing creativity and passion to every frame.
-          </p>
+    <div class="masonry" id="vertical-grid" aria-live="polite"></div>
+  </section>
 
-          <div class="contact-info">
-            <div><i class="bi bi-envelope"></i> <a href="mailto:haziqmishhak@gmail.com">haziqmishhak@gmail.com</a></div>
-            <div><i class="bi bi-phone"></i> <a href="tel:+60111224910">+60 11-12249105</a></div>
-            <div><i class="bi bi-geo-alt"></i> Semenyih, Selangor</div>
-          </div>
+  <!-- ============ SECTION 02 — LANDSCAPE ============ -->
+  <div class="section-divider" aria-hidden="true"><span>02 · Landscape</span></div>
+  <section id="horizontals" class="section section--alt">
+    <header class="section__head">
+      <div class="section__head-top">
+        <span class="section__num">02</span>
+        <span class="section__count" data-count-target="horizontal">— / —</span>
+      </div>
+      <h2 class="section__title">Landscape</h2>
+      <p class="section__sub">Landscape orientation · wide frames</p>
+    </header>
+
+    <div class="hgrid" id="horizontal-grid" aria-live="polite"></div>
+  </section>
+
+  <!-- ============ SECTION 03 — MOTION ============ -->
+  <div class="section-divider" aria-hidden="true"><span>03 · Motion</span></div>
+  <section id="motion" class="section">
+    <header class="section__head">
+      <div class="section__head-top">
+        <span class="section__num">03</span>
+        <span class="section__count" data-count-target="video">— / —</span>
+      </div>
+      <h2 class="section__title">Motion</h2>
+      <p class="section__sub">Selected video work</p>
+    </header>
+
+    <div class="videos" id="video-grid" aria-live="polite"></div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer__rule"></div>
+    <div class="footer__inner">
+      <div class="footer__sig">
+        <img src="assets/img/favicon.png" alt="HS" />
+        <div>
+          <strong>Haziq Mishhak</strong>
+          <span>Photographer · Videographer</span>
         </div>
       </div>
-    </section>
-
-    <!-- ======= Vertical/Portrait Photography Gallery Section ======= -->
-    <section id="vertical-photos">
-      <div class="container">
-        <div class="section-title" data-aos="fade-up">
-          <h2>Portrait Photography</h2>
-          <p style="color: var(--text-light); margin-top: 15px;">Vertical compositions capturing elegance and emotion</p>
-        </div>
-
-        <div class="photo-slider-container">
-          <div class="loading-gallery" id="vertical-loading">
-            <i class="bi bi-hourglass-split"></i> Loading gallery...
-          </div>
-
-          <!-- Swiper Slider for Vertical Images (4 per slide) -->
-          <div class="swiper verticalSwiper" style="display: none;">
-            <div class="swiper-wrapper vertical-gallery" id="vertical-gallery">
-              <!-- Images will be dynamically added here by JavaScript -->
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-pagination"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======= Horizontal/Landscape Photography Gallery Section ======= -->
-    <section id="horizontal-photos">
-      <div class="container">
-        <div class="section-title" data-aos="fade-up">
-          <h2>Landscape Photography</h2>
-          <p style="color: var(--text-light); margin-top: 15px;">Horizontal compositions showcasing breadth and beauty</p>
-        </div>
-
-        <div class="photo-slider-container">
-          <div class="loading-gallery" id="horizontal-loading">
-            <i class="bi bi-hourglass-split"></i> Loading gallery...
-          </div>
-
-          <!-- Swiper Slider for Horizontal Images (2 per slide) -->
-          <div class="swiper horizontalSwiper" style="display: none;">
-            <div class="swiper-wrapper horizontal-gallery" id="horizontal-gallery">
-              <!-- Images will be dynamically added here by JavaScript -->
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-pagination"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======= Videography Gallery Section ======= -->
-    <section id="videography">
-      <div class="container">
-        <div class="section-title" data-aos="fade-up">
-          <h2>Videography</h2>
-        </div>
-
-        <div class="video-gallery">
-
-          <!-- ========== ADD/EDIT VIDEOS BELOW ========== -->
-          <!-- YouTube: Use embed URL format: https://www.youtube.com/embed/VIDEO_ID -->
-
-          <div class="video-item" data-aos="fade-up">
-            <div class="video-wrapper">
-              <iframe src="https://www.youtube.com/embed/767Z3uYmYV0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowfullscreen>
-              </iframe>
-            </div>
-            <div class="video-title">Wedding Videography</div>
-          </div>
-
-          <div class="video-item" data-aos="fade-up" data-aos-delay="100">
-            <div class="video-wrapper">
-              <iframe src="https://www.youtube.com/embed/46HiFfkAbW4"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowfullscreen>
-              </iframe>
-            </div>
-            <div class="video-title">Event Coverage</div>
-          </div>
-
-          <!-- TO ADD MORE VIDEOS: Copy the video-item div above and paste below -->
-          <!--
-          Example:
-          <div class="video-item" data-aos="fade-up">
-            <div class="video-wrapper">
-              <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowfullscreen>
-              </iframe>
-            </div>
-            <div class="video-title">Your Video Title</div>
-          </div>
-          -->
-
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ======= Footer ======= -->
-  <footer>
-    <div class="container">
-      <p><strong>Available for Freelance Work</strong></p>
-      <p>📧 haziqmishhak@gmail.com | 📱 +60 11-12249105</p>
-
-      <div class="social-links">
-        <a href="https://instagram.com/haziqmishhak" target="_blank"><i class="bi bi-instagram"></i></a>
-        <a href="https://www.youtube.com/@haziqmishhak" target="_blank"><i class="bi bi-youtube"></i></a>
-      </div>
-
-      <p style="margin-top: 30px; font-size: 0.9rem;">&copy; 2024 Haziq Mishhak. All rights reserved.</p>
+      <p class="footer__colophon">
+        Set in <em>Fraunces</em> &amp; <em>JetBrains Mono</em>.
+        Hand-built, no frameworks. Hosted on GitHub Pages.
+      </p>
+      <p class="footer__year">© <span id="year"></span> — All photographs by Haziq Mishhak.</p>
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <!-- ============ LIGHTBOX ============ -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+    <button class="lightbox__close" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="22" height="22"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+    </button>
+    <button class="lightbox__nav lightbox__nav--prev" aria-label="Previous">
+      <svg viewBox="0 0 24 24" width="26" height="26"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="lightbox__nav lightbox__nav--next" aria-label="Next">
+      <svg viewBox="0 0 24 24" width="26" height="26"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <figure class="lightbox__frame">
+      <img class="lightbox__img" alt="" />
+      <figcaption class="lightbox__caption">
+        <span class="lightbox__index">01 / 09</span>
+        <span class="lightbox__name">filename.jpg</span>
+        <a class="lightbox__download" href="#" download>
+          <svg viewBox="0 0 24 24" width="14" height="14"><path d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Download
+        </a>
+      </figcaption>
+    </figure>
+  </div>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-
-  <script>
-    // ========== PHOTO GALLERY AUTO-DETECTION AND ORGANIZATION ==========
-    // This script automatically detects whether images are vertical or horizontal
-    // and organizes them into separate sliders
-
-    // List of all your portfolio images
-    // TO ADD MORE PHOTOS: Just add the filename to this array
-    const portfolioImages = [
-      '11.jpg',
-      '15.jpg',
-      '16.jpg',
-      '17.jpg',
-      '18.jpg',
-      '12.jpg',
-      '13.jpg',
-      '14.jpg',
-      '21.jpg',
-      '22.jpg',
-      '23.jpg'
-      // Add more images here in the format: 'YOUR_IMAGE.jpg',
-    ];
-
-    // Function to check if an image is vertical or horizontal
-    function detectImageOrientation(imagePath) {
-      return new Promise((resolve) => {
-        const img = new Image();
-        img.onload = function() {
-          const orientation = this.height > this.width ? 'vertical' : 'horizontal';
-          resolve({
-            path: imagePath,
-            orientation: orientation,
-            width: this.width,
-            height: this.height
-          });
-        };
-        img.onerror = function() {
-          resolve({
-            path: imagePath,
-            orientation: 'horizontal', // default to horizontal if image fails to load
-            width: 0,
-            height: 0
-          });
-        };
-        img.src = imagePath;
-      });
-    }
-
-    // Function to create gallery item HTML
-    function createGalleryItem(imagePath, index) {
-      return `
-        <div class="swiper-slide">
-          <div class="gallery-item">
-            <img src="${imagePath}" alt="Photography Work" loading="lazy">
-            <div class="gallery-overlay">
-              <a href="${imagePath}" class="gallery-icon photo-lightbox" title="View Full Size">
-                <i class="bi bi-zoom-in"></i>
-              </a>
-              <a href="${imagePath}" download class="gallery-icon" title="Download">
-                <i class="bi bi-download"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      `;
-    }
-
-    // Initialize the gallery
-    async function initializeGallery() {
-      const verticalImages = [];
-      const horizontalImages = [];
-
-      // Detect orientation of all images
-      const detections = await Promise.all(
-        portfolioImages.map(filename =>
-          detectImageOrientation(`assets/img/portfolio/${filename}`)
-        )
-      );
-
-      // Sort images by orientation
-      detections.forEach(img => {
-        if (img.orientation === 'vertical') {
-          verticalImages.push(img.path);
-        } else {
-          horizontalImages.push(img.path);
-        }
-      });
-
-      // Populate vertical gallery
-      const verticalGallery = document.getElementById('vertical-gallery');
-      if (verticalImages.length > 0) {
-        verticalGallery.innerHTML = verticalImages.map((img, idx) =>
-          createGalleryItem(img, idx)
-        ).join('');
-        document.querySelector('.verticalSwiper').style.display = 'block';
-        document.getElementById('vertical-loading').style.display = 'none';
-      } else {
-        document.getElementById('vertical-loading').innerHTML = '<p>No vertical images found</p>';
-      }
-
-      // Populate horizontal gallery
-      const horizontalGallery = document.getElementById('horizontal-gallery');
-      if (horizontalImages.length > 0) {
-        horizontalGallery.innerHTML = horizontalImages.map((img, idx) =>
-          createGalleryItem(img, idx)
-        ).join('');
-        document.querySelector('.horizontalSwiper').style.display = 'block';
-        document.getElementById('horizontal-loading').style.display = 'none';
-      } else {
-        document.getElementById('horizontal-loading').innerHTML = '<p>No horizontal images found</p>';
-      }
-
-      // Initialize Swiper sliders after images are loaded
-      initializeSwipers();
-
-      // Initialize lightbox for Polaroid effect
-      initializeLightbox();
-    }
-
-    // Initialize Swiper sliders with improved spacing
-    function initializeSwipers() {
-      // Vertical Images Slider (4 images per slide)
-      new Swiper('.verticalSwiper', {
-        slidesPerView: 1,
-        spaceBetween: 24,
-        loop: true,
-        autoplay: {
-          delay: 7500, // 7.5 seconds
-          disableOnInteraction: false,
-          pauseOnMouseEnter: true,
-        },
-        pagination: {
-          el: '.verticalSwiper .swiper-pagination',
-          clickable: true,
-        },
-        navigation: {
-          nextEl: '.verticalSwiper .swiper-button-next',
-          prevEl: '.verticalSwiper .swiper-button-prev',
-        },
-        speed: 800,
-        effect: 'slide',
-        breakpoints: {
-          640: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          768: {
-            slidesPerView: 3,
-            spaceBetween: 24,
-          },
-          1024: {
-            slidesPerView: 4,
-            spaceBetween: 24,
-          },
-        },
-      });
-
-      // Horizontal Images Slider (2 images per slide)
-      new Swiper('.horizontalSwiper', {
-        slidesPerView: 1,
-        spaceBetween: 24,
-        loop: true,
-        autoplay: {
-          delay: 8000, // 8 seconds
-          disableOnInteraction: false,
-          pauseOnMouseEnter: true,
-        },
-        pagination: {
-          el: '.horizontalSwiper .swiper-pagination',
-          clickable: true,
-        },
-        navigation: {
-          nextEl: '.horizontalSwiper .swiper-button-next',
-          prevEl: '.horizontalSwiper .swiper-button-prev',
-        },
-        speed: 800,
-        effect: 'slide',
-        breakpoints: {
-          768: {
-            slidesPerView: 2,
-            spaceBetween: 24,
-          },
-        },
-      });
-    }
-
-    // Initialize GLightbox with Polaroid effect
-    function initializeLightbox() {
-      GLightbox({
-        selector: '.photo-lightbox',
-        touchNavigation: true,
-        loop: true,
-        autoplayVideos: true
-      });
-    }
-
-    // Initialize AOS (Animate On Scroll)
-    AOS.init({
-      duration: 1000,
-      once: true
-    });
-
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          const offsetTop = target.offsetTop - 80;
-          window.scrollTo({
-            top: offsetTop,
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-
-    // Start the gallery when page loads
-    window.addEventListener('load', initializeGallery);
-  </script>
-
+  <script src="assets/js/gallery.js"></script>
 </body>
-
 </html>
